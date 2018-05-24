@@ -17,10 +17,12 @@ ln -s /home/gamblodar/securepi/dhcpd.conf /etc/dhcp/
 ln -s /home/gamblodar/securepi/01-pihole.conf /etc/dnsmasq.d/  
 ln -s /home/gamblodar/securepi/setupVars.conf /etc/pihole/  
 ln -s /home/gamblodar/securepi/lighttpd.conf /etc/lighttpd/  
-ln -s /home/gamblodar/securepi/ssh /home/gamblodar/.ssh  
+ln -s /home/gamblodar/securepi/ssh /home/gamblodar/.ssh
+ln -s /home/gamblodar/sudoers /etc/  
 ln -s /var/www/html /home/gamblodar/securepi/www/pihole
 cp    /home/gamblodar/securepi/config.txt /boot/
 cp    /home/gamblodar/securepi/cmdline.txt /boot/
 cp    /home/gamblodar/securepi/pre-commit /home/gamblodar/securepi/.git/hooks/
 cp    /home/gamblodar/securepi/post-checkout /home/gamblodar/securepi/.git/hooks/
+systemctl enable papirus.service
 systemctl daemon-reload

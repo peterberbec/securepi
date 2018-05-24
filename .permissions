@@ -17,6 +17,7 @@ rc.local;775;root;root
 setupVars.conf;664;root;root
 ssh/authorized_keys;600;gamblodar;sudo
 ssh/known_hosts;600;gamblodar;sudo
+sudoers;440;root;root
 vpn_masquerade.sh;775;root;root
 www/done.html;664;www-data;www-data
 www/index.html;664;www-data;www-data
