@@ -57,7 +57,7 @@ if (!empty($_FILES["myFile"]))
 	$output_file = fopen($temp_file, "w");
 	if($output_file === false)
 	{
-		print "Error opening ouptu file\n";
+		print "Error opening output file\n";
 		print "<a href=//secure.pi/upload.html>Back</a>";
 		exit;
 	}
@@ -150,9 +150,51 @@ if (!empty($_FILES["myFile"]))
 	}
 	else
 	{
-		if($ca_test === false)		print "Didn't find a <ca> block\n";
-		if($remote_test === false)	print "Didn't find a remote server line\n";
-		if($proto_test === false)	print "Didn't find a protocol line\n";
+		print "<html>\n<body>\n<p><h1>Error in uploaded OpenVPN configuration</h1></p>\n";
+		if($ca_test === false)
+		{
+			print "<h3><b>Didn't find a \"&lt;ca&gt;\" block</b></h3>";
+			print "<p>Some downloaded OpenVPN configurations contain a seperate file ";
+			print "that contains the Root CA certificate. This needs to be included ";
+			print "in the file uploaded. ";
+			print "To fix this error, please open the OpenVPN configuration file in the ";
+			print "editor of your choice. Also open the CA root certificate you downloaded ";
+			print "from your VPN provider. Add the following line to your OpenVPN config: ";
+			print "<pre>&lt;ca&gt;</pre>";
+			print "Then copy the CA root certificate from the";
+			print "<pre>-----BEGIN</pre>all the way to the";
+			print "<pre>-----END</pre>";
+			print "and copy that into the configuration file. After that, add the following line:";
+			print "<pre>&lt;/ca&gt;</pre>";
+			print "You should be able to upload the configuration successfully after that.</p>";
+		}
+		if($remote_test === false)
+		{
+			print "<h3><b>Didn't find a \"remote\" server line.</b></h3>";
+			print "<p>The \"remote\" line tells OpenVPN where to connect. ";
+			print "It is very unlikely a configuration file lacks this line. ";
+			print "Ensure you are uploading the correct file. Some VPN providers ";
+			print "distribute their configurations compressed. If the file shows as ";
+			print "\"Zip file\" or \"Archive\" or something similar, please uncompress ";
+			print "and upload the correct file.</p>";
+		}
+		if($proto_test === false)
+		{
+			print "<b><h3>Didn't find a \"proto\" line.</h3></b>";
+			print "<p>The \"proto\" line tell OpenVPN if it uses UDP or TCP, the two possible ";
+			print "was of communicating with the VPN server. Most configurations use UDP, but ";
+			print "we cannot assume that is the case. The connetion will fail with the wrong ";
+			print "setting. Please contact your VPN provider and determine if the use UDP or ";
+			print "TCP. Once you are aware of the correct style of connection, add a single line ";
+			print "in your OpenVPN configuration file.<br><br>";
+			print "Either add:";
+			print "<pre>proto udp</pre>";
+			print "or";
+			print "<pre>proto tcp</pre>";
+			print "and reupload the file.</p>";
+		}
+		print "<p><h2>Please fix these issues and reupload your configuration file.</h2><p>";
+		print "<a href=//secure.pi/upload.html>Back</a></body></html>";
 		exit;
 	}
 	// set proper permissions on the new file
