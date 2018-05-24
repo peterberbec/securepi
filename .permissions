@@ -23,6 +23,7 @@ www/index.html;664;www-data;www-data
 www/login.html;664;www-data;www-data
 www/login.php;664;www-data;www-data
 www/pihole;777;www-data;www-data
+www/secure_pi_display.jpg;644;gamblodar;sudo
 www/start.html;664;www-data;www-data
 www/start.php;664;www-data;www-data
 www/upload.html;664;www-data;www-data

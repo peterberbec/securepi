@@ -4,12 +4,68 @@ function startsWith($haystack, $needle)
      $length = strlen($needle);
      return (substr($haystack, 0, $length) === $needle);
 }
+function ca_error()
+{
+	print "<h3><b>Didn't find a \"&lt;ca&gt;\" block</b></h3>";
+	print "<p>Some downloaded OpenVPN configurations contain a seperate file ";
+	print "that contains the Root CA certificate. This needs to be included ";
+	print "in the file uploaded. ";
+	print "To fix this error, please open the OpenVPN configuration file in the ";
+	print "editor of your choice. Also open the CA root certificate you downloaded ";
+	print "from your VPN provider. Add the following line to your OpenVPN config: ";
+	print "<pre>&lt;ca&gt;</pre>";
+	print "Then copy the CA root certificate from the";
+	print "<pre>-----BEGIN</pre>all the way to the";
+	print "<pre>-----END</pre>";
+	print "and copy that into the configuration file. After that, add the following line:";
+	print "<pre>&lt;/ca&gt;</pre>";
+	print "You should be able to upload the configuration successfully after that.</p>";
+}
+function proto_error()
+{
+	print "<b><h3>Didn't find a \"proto\" line.</h3></b>";
+	print "<p>The \"proto\" line tell OpenVPN if it uses UDP or TCP, the two possible ";
+	print "was of communicating with the VPN server. Most configurations use UDP, but ";
+	print "we cannot assume that is the case. The connetion will fail with the wrong ";
+	print "setting. Please contact your VPN provider and determine if the use UDP or ";
+	print "TCP. Once you are aware of the correct style of connection, add a single line ";
+	print "in your OpenVPN configuration file.<br><br>";
+	print "Either add:";
+	print "<pre>proto udp</pre>";
+	print "or";
+	print "<pre>proto tcp</pre>";
+	print "and reupload the file.</p>";
+}
+function remote_error()
+{
+	print "<h3><b>Didn't find a \"remote\" server line.</b></h3>";
+	print "<p>The \"remote\" line tells OpenVPN where to connect. ";
+	print "It is very unlikely a configuration file lacks this line. ";
+	print "Ensure you are uploading the correct file. Some VPN providers ";
+	print "distribute their configurations compressed. If the file shows as ";
+	print "\"Zip file\" or \"Archive\" or something similar, please uncompress ";
+	print "and upload the correct file.</p>";
+}
+function print_html_begin()
+{
+	print "<html><body>";
+}
+function print_html_end()
+{
+	print "</html></body>";
+}
+function print_back()
+{
+	print "<a href=//secure.pi/upload.html>Back</a>";
+}
 $config_file = "/etc/openvpn/uploaded.conf";
 $keywords = array(	"udp"		=> "proto udp",
 			"tcp"		=> "proto tcp",
 			"remote"	=> "remote ",
 			"start_ca"	=> "<ca>",
-			"end_ca"	=> "</ca>");
+			"begin_ca"	=> "-----BEGIN",
+			"end_ca"	=> "-----END",
+			"stop_ca"	=> "</ca>");
 $keywords_skip = array( 1 => "client",
 		 	2 => "dev",
 		 	3 => "verb",
@@ -33,8 +89,10 @@ if (!empty($_FILES["myFile"]))
 
 	if ($myFile["error"] !== UPLOAD_ERR_OK)
 	{
+		print_html_begin();
 		print "An error occurred uploading the file.";
-		print "<a href=//secure.pi/upload.html>Back</a>";
+		print_back();
+		print_html_end();
 		exit;
 	}
 	$tmp = $_FILES["myFile"][tmp_name];
@@ -42,23 +100,29 @@ if (!empty($_FILES["myFile"]))
 
 	if(move_uploaded_file($tmp, $temp_uploaded_file) === false)
 	{
+		print_html_begin();
 		print "An error occurred moving the uploaded file.";
-		print "<a href=//secure.pi/upload.html>Back</a>";
+		print_back();
+		print_html_end();
 		exit;
 	}	
 
 	$input_file = fopen($temp_uploaded_file, "r");
 	if($input_file === false)
 	{
+		print_html_begin();
 		print "Error opening input file\n";
-		print "<a href=//secure.pi/upload.html>Back</a>";
+		print_back();
+		print_html_end();
 		exit;
 	}
 	$output_file = fopen($temp_file, "w");
 	if($output_file === false)
 	{
+		print_html_begin();
 		print "Error opening output file\n";
-		print "<a href=//secure.pi/upload.html>Back</a>";
+		print_back();
+		print_html_end();
 		exit;
 	}
 	$proto_test = false;
@@ -92,18 +156,47 @@ if (!empty($_FILES["myFile"]))
 			}
 			elseif(startsWith($line, $keywords["start_ca"]))
 			{
+# "start_ca" => "<ca>",	"begin_ca" => "-----BEGIN", "end_ca" => "-----END", "stop_ca" => "</ca>"
 				$ca = $line;
+				$line = fgets($input_file);
+				if(startsWith($line, $keywords["begin_ca"]))
+				{
+					$ca .= $line;
+				}
+				else
+				{
+					print_html_begin();
+					ca_error();
+					print_back();
+					print_html_end();
+					exit;
+				}
 				do
 				{
 					$line = fgets($input_file);
 					if($line === false)
 					{
-						print "File read error during ca cert.\n";
-						print "<a href=//secure.pi/upload.html>Back</a>";
+						print_html_begin();
+						ca_error();
+						print_back();
+						print_html_begin();
 						exit;
 					}
 					$ca .= $line;
 				} while(startsWith($line, $keywords["end_ca"]) === false);
+				$line = fgets($input_file);
+				if(startsWith($line, $keywords["stop_ca"]))
+				{
+					$ca .= $line;
+				}
+				else
+				{
+					print_html_begin();
+					ca_error();
+					print_back();
+					print_html_end();
+					exit;
+				}
 				fwrite($output_file, $ca);
 				$ca_test = true;
 			}
@@ -136,8 +229,10 @@ if (!empty($_FILES["myFile"]))
 		$input_file = fopen($temp_file, "r");
 		if($input_file === false Or $output_file === false)
 		{
+			print_html_begin();
 			print "Error opening files\n";
-			print "<a href=//secure.pi/upload.html>Back</a>";
+			print_back();
+			print_html_end();
 			exit;
 		}
 		while(($line = fgets($input_file)) !== false)
@@ -150,51 +245,23 @@ if (!empty($_FILES["myFile"]))
 	}
 	else
 	{
-		print "<html>\n<body>\n<p><h1>Error in uploaded OpenVPN configuration</h1></p>\n";
+		print_html_begin();
+		print "<p><h1>Error in uploaded OpenVPN configuration</h1></p>\n";
 		if($ca_test === false)
 		{
-			print "<h3><b>Didn't find a \"&lt;ca&gt;\" block</b></h3>";
-			print "<p>Some downloaded OpenVPN configurations contain a seperate file ";
-			print "that contains the Root CA certificate. This needs to be included ";
-			print "in the file uploaded. ";
-			print "To fix this error, please open the OpenVPN configuration file in the ";
-			print "editor of your choice. Also open the CA root certificate you downloaded ";
-			print "from your VPN provider. Add the following line to your OpenVPN config: ";
-			print "<pre>&lt;ca&gt;</pre>";
-			print "Then copy the CA root certificate from the";
-			print "<pre>-----BEGIN</pre>all the way to the";
-			print "<pre>-----END</pre>";
-			print "and copy that into the configuration file. After that, add the following line:";
-			print "<pre>&lt;/ca&gt;</pre>";
-			print "You should be able to upload the configuration successfully after that.</p>";
+			ca_error();
 		}
 		if($remote_test === false)
 		{
-			print "<h3><b>Didn't find a \"remote\" server line.</b></h3>";
-			print "<p>The \"remote\" line tells OpenVPN where to connect. ";
-			print "It is very unlikely a configuration file lacks this line. ";
-			print "Ensure you are uploading the correct file. Some VPN providers ";
-			print "distribute their configurations compressed. If the file shows as ";
-			print "\"Zip file\" or \"Archive\" or something similar, please uncompress ";
-			print "and upload the correct file.</p>";
+			remote_error();
 		}
 		if($proto_test === false)
 		{
-			print "<b><h3>Didn't find a \"proto\" line.</h3></b>";
-			print "<p>The \"proto\" line tell OpenVPN if it uses UDP or TCP, the two possible ";
-			print "was of communicating with the VPN server. Most configurations use UDP, but ";
-			print "we cannot assume that is the case. The connetion will fail with the wrong ";
-			print "setting. Please contact your VPN provider and determine if the use UDP or ";
-			print "TCP. Once you are aware of the correct style of connection, add a single line ";
-			print "in your OpenVPN configuration file.<br><br>";
-			print "Either add:";
-			print "<pre>proto udp</pre>";
-			print "or";
-			print "<pre>proto tcp</pre>";
-			print "and reupload the file.</p>";
+			proto_error();
 		}
 		print "<p><h2>Please fix these issues and reupload your configuration file.</h2><p>";
-		print "<a href=//secure.pi/upload.html>Back</a></body></html>";
+		print_back();
+		print_html_end();
 		exit;
 	}
 	// set proper permissions on the new file
