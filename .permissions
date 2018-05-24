@@ -1,4 +1,5 @@
 .gitignore;644;root;root
+.permissions;644;gamblodar;sudo
 01-pihole.conf;664;root;root
 README.md;775;gamblodar;sudo
 clean_settings.sh;775;gamblodar;sudo
@@ -10,6 +11,8 @@ lighttpd.conf;664;root;root
 non_vpn_masquerade.sh;775;root;root
 papirus.service;664;gamblodar;sudo
 papirus_vpn_monitor.py;775;gamblodar;sudo
+post-checkout;755;gamblodar;sudo
+pre-commit;755;gamblodar;sudo
 rc.local;775;root;root
 setupVars.conf;664;root;root
 ssh/authorized_keys;600;gamblodar;sudo
@@ -26,3 +29,5 @@ www/upload.html;664;www-data;www-data
 www/upload.php;664;www-data;www-data
 www/wifi.html;664;www-data;www-data
 www/wifi.php;664;www-data;www-data
+ssh;700;gamblodar;sudo
+www;775;www-data;www-data

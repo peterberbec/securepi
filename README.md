@@ -20,3 +20,5 @@ ln -s /home/gamblodar/securepi/lighttpd.conf /etc/lighttpd/
 ln -s /home/gamblodar/securepi/ssh /home/gamblodar/.ssh  
 cp    /home/gamblodar/securepi/config.txt /boot/
 cp    /home/gamblodar/securepi/cmdline.txt /boot/
+cp    /home/gamblodar/securepi/pre-commit /home/gamblodar/securepi/.git/hooks/
+cp    /home/gamblodar/securepi/post-checkout /home/gamblodar/securepi/.git/hooks/
