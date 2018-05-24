@@ -1,0 +1,13 @@
+[Unit]
+Description=PaPiRus Display
+After=multi-user.target
+ 
+[Service]
+Type=simple
+ExecStart=/bin/bash -c 'exec /usr/bin/sudo -u gamblodar /usr/bin/python3 /home/gamblodar/securepi/papirus_vpn_monitor.py >> /var/log/papirus.log 2>&1'
+Restart=always
+RestartSec=3
+Nice=19
+ 
+[Install]
+WantedBy=multi-user.target
