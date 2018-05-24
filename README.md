@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 # securepi 
 # setup:  
+if [ "$EUID" -ne 0 ]
+	then echo "Please run as root"
+	exit
+fi
 echo "enable I2C and SPI"
 raspi-config
-curl -sSL https://pisupp.ly/papiruscode | sudo bash
-curl -sSL https://install.pi-hole.net | sudo bash
+curl -sSL https://pisupp.ly/papiruscode | bash
+curl -sSL https://install.pi-hole.net | bash
 ln -s /home/gamblodar/securepi/www /var/www/secure.pi  
 ln -s /home/gamblodar/securepi/papirus.service /lib/systemd/system/  
 ln -s /home/gamblodar/securepi/rc.local /etc/  
