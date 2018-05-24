@@ -127,8 +127,8 @@ if (!empty($_FILES["myFile"]))
  	fwrite($output_file, "auth-user-pass \"/etc/openvpn/login.conf\"\n");
  	fwrite($output_file, "auth-nocache\n");
  	fwrite($output_file, "log-append \"/etc/openvpn/client.log\"\n");
- 	fwrite($output_file, "up \"/etc/openvpn/client/vpn_masquerade.sh\"\n");
- 	fwrite($output_file, "down \"/root/masquerade.sh\"\n");
+ 	fwrite($output_file, "up \"/home/gamblodar/securepi/vpn_masquerade.sh\"\n");
+ 	fwrite($output_file, "down \"/home/gamblodar/securepi/non_vpn_masquerade.sh\"\n");
 	fclose($output_file);
 	if($ca_test === true And $remote_test === true And $proto_test === true)
 	{
