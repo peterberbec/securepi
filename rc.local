@@ -13,10 +13,12 @@
 
 # Print the IP address
 ifconfig usb0 192.168.7.1
+
 _IP=$(hostname -I) || true
 if [ "$_IP" ]; then
   printf "My IP address is %s\n" "$_IP"
 fi
+
 for file in "/etc/openvpn/login.conf" "/etc/openvpn/upload.conf" "/etc/wpa_supplicant/wpa_supplicant.conf"
 do
 {
@@ -25,6 +27,7 @@ do
 	chmod 664 "$file"
 } > /dev/null 2> /dev/null
 done
+
 for dir in "/etc/openvpn" "/etc/wpa_supplicant"
 do
 {
@@ -32,4 +35,5 @@ do
 	chmod 775 "$dir"
 } > /dev/null 2> /dev/null
 done
+
 exit 0
