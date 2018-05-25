@@ -13,7 +13,7 @@ papirus.service;664;gamblodar;sudo
 papirus_vpn_monitor.py;775;gamblodar;sudo
 post-checkout;755;gamblodar;sudo
 pre-commit;755;gamblodar;sudo
-rc.local;775;root;root
+rc.local;755;gamblodar;sudo
 setupVars.conf;664;root;root
 ssh/authorized_keys;600;gamblodar;sudo
 ssh/known_hosts;600;gamblodar;sudo

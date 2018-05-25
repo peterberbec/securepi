@@ -19,9 +19,9 @@ text_time = cur_time.strftime('%Y/%m/%d %I:%M:%S')
 disp_text="web - http://secure.pi"
 if console_display: print(disp_text)
 text.AddText(disp_text,  0, vert_spacing * 0, font_size, Id="web")
-disp_text="ssid- "
+disp_text="wifi- "
 if console_display: print(disp_text)
-text.AddText(disp_text,  0, vert_spacing * 1, font_size, Id="ssid")
+text.AddText(disp_text,  0, vert_spacing * 1, font_size, Id="wifi")
 disp_text="wlan- "
 if console_display: print(disp_text)
 text.AddText(disp_text,  0, vert_spacing * 2, font_size, Id="wlan0")
@@ -121,13 +121,13 @@ while True:
         text.AddText(disp_text, 0, vert_spacing * 5, font_size, Id="date", invert=inv)
     try:
         result = subprocess.check_output('/sbin/iwgetid -r', shell=True)
-        disp_text = 'ssid- ' + str(result.decode('utf-8'))
+        disp_text = 'wifi- ' + str(result.decode('utf-8'))
     except:
-        disp_text = 'ssid- Update Wifi Config'
+        disp_text = 'wifi- Please Configure'
     finally:
         if console_display: print(disp_text)
-        text.RemoveText("ssid")
-        text.AddText(disp_text,  0, vert_spacing * 1, font_size, Id="ssid", invert=inv)
+        text.RemoveText("wifi")
+        text.AddText(disp_text,  0, vert_spacing * 1, font_size, Id="wifi", invert=inv)
     disp_text="web - http://secure.pi"
     if console_display: print(disp_text)
     text.RemoveText("web")
