@@ -1,6 +1,6 @@
 Preperation:
 
-1. Write down you Wifi name (SSID) and password
+1. Write down your Wifi name (SSID) and password.
 2. Download your OpenVPN client configuration from your VPN provider.
 3. Write down your VPN username and password.
 4. Connect SecurePi to your computer with the included USB cable.
