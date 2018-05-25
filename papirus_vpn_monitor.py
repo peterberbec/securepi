@@ -105,9 +105,9 @@ while True:
             disp_text = 'wan - ' + match
         have_inet = True
     except:
+        disp_text = 'wan - '
         if not wifi_up:
             disp_text = 'wan - For SSL Cert'
-        disp_text = 'wan - '
         have_inet = False
     finally:
         s.close()
