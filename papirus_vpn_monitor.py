@@ -50,6 +50,17 @@ while True:
         time.sleep(2)
         continue
     tunnel_up = False
+    wifi_up = False
+    try:
+        result = subprocess.check_output('/sbin/iwgetid -r', shell=True)
+        disp_text = 'wifi- ' + str(result.decode('utf-8'))
+        wifi_up = True
+    except:
+        disp_text = 'wifi- Please Configure'
+    finally:
+        if console_display: print(disp_text)
+        text.RemoveText("wifi")
+        text.AddText(disp_text,  0, vert_spacing * 1, font_size, Id="wifi", invert=inv)
     for ifaceName in interfaces():
         if ifaceName == "lo": continue
         addresses = [i['addr'] for i in ifaddresses(ifaceName).setdefault(AF_INET, [{'addr':'No IP addr'}] )]
@@ -64,11 +75,15 @@ while True:
                 disp_text = 'wlan- '
             else:
                 disp_text = 'wlan- ' + "".join(addresses)
+            if not wifi_up:
+                disp_text = 'wlan- Add exception'
             if console_display: print(disp_text)
             text.RemoveText("wlan0")
             text.AddText(disp_text,  0, vert_spacing * 2, font_size, Id="wlan0", invert=inv)
         elif ifaceName != "wlan0" and ifaceName != "tun0":
             disp_text = 'wlan- '
+            if not wifi_up:
+                disp_text = 'wlan- Add exception'
             if console_display: print(disp_text)
             text.RemoveText("wlan0")
             text.AddText(disp_text,  0, vert_spacing * 2, font_size, Id="wlan0", invert=inv)
@@ -90,6 +105,8 @@ while True:
             disp_text = 'wan - ' + match
         have_inet = True
     except:
+        if not wifi_up:
+            disp_text = 'wan - For SSL Cert'
         disp_text = 'wan - '
         have_inet = False
     finally:
@@ -119,15 +136,6 @@ while True:
         if console_display: print(disp_text)
         text.RemoveText("date")
         text.AddText(disp_text, 0, vert_spacing * 5, font_size, Id="date", invert=inv)
-    try:
-        result = subprocess.check_output('/sbin/iwgetid -r', shell=True)
-        disp_text = 'wifi- ' + str(result.decode('utf-8'))
-    except:
-        disp_text = 'wifi- Please Configure'
-    finally:
-        if console_display: print(disp_text)
-        text.RemoveText("wifi")
-        text.AddText(disp_text,  0, vert_spacing * 1, font_size, Id="wifi", invert=inv)
     disp_text="web - http://secure.pi"
     if console_display: print(disp_text)
     text.RemoveText("web")

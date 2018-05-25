@@ -1,12 +1,14 @@
 .gitignore;644;root;root
 .permissions;644;gamblodar;sudo
 01-pihole.conf;664;root;root
+10-ssl.conf;644;gamblodar;sudo
 README.md;775;gamblodar;sudo
 clean_settings.sh;775;gamblodar;sudo
 cmdline.txt;755;gamblodar;sudo
 config.txt;755;gamblodar;sudo
 dhcpcd.conf;664;root;netdev
 dhcpd.conf;664;root;root
+generate_ssl_cert.sh;755;gamblodar;sudo
 lighttpd.conf;664;root;root
 non_vpn_masquerade.sh;775;root;root
 papirus.service;664;gamblodar;sudo

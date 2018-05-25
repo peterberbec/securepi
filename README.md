@@ -24,5 +24,7 @@ cp    /home/gamblodar/securepi/config.txt /boot/
 cp    /home/gamblodar/securepi/cmdline.txt /boot/
 cp    /home/gamblodar/securepi/pre-commit /home/gamblodar/securepi/.git/hooks/
 cp    /home/gamblodar/securepi/post-checkout /home/gamblodar/securepi/.git/hooks/
+ln -s /home/gamblodar/securepi/10-ssl.conf /etc/lighttpd/conf-enabled/
 systemctl enable papirus.service
 systemctl daemon-reload
+/home/gamblodar/securepi/generate_ssl_cert.sh
