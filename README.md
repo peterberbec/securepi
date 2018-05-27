@@ -21,6 +21,7 @@ ln -fs /home/gamblodar/securepi/setupVars.conf /etc/pihole/
 ln -fs /home/gamblodar/securepi/lighttpd.conf /etc/lighttpd/  
 ln -fs /home/gamblodar/securepi/ssh /home/gamblodar/.ssh  
 ln -fs /etc/openvpn/client.log /home/gamblodar/securepi/www  
+ln -s /etc/openvpn/client.log /var/log
 ln -fs /home/gamblodar/sudoers /etc/  
 ln -fs /var/www/html /home/gamblodar/securepi/www/pihole  
 cp -f  /home/gamblodar/securepi/config.txt /boot/  
@@ -41,3 +42,4 @@ service lighttpd restart
 service dnsmasq restart  
 service pihole-FTL restart  
 bash /etc/rc.local  
+ln -s /home/gamblodar/securepi/hosts /etc  
