@@ -13,10 +13,10 @@ iptables -P OUTPUT ACCEPT
 iptables -t nat -A POSTROUTING -o tun0 -j MASQUERADE
 iptables -A FORWARD -i tun0 -o usb0 -m state --state RELATED,ESTABLISHED -j ACCEPT
 iptables -A FORWARD -i usb0 -o tun0 -j ACCEPT
-echo "$(date +"%a %b %d %H:%M:%S %Y") restarting dnsmasq"
-service dnsmasq restart
-sleep 2
-echo "$(date +"%a %b %d %H:%M:%S %Y") restarting pihole-FTL"
-service pihole-FTL restart
-sleep 2 
+#echo "$(date +"%a %b %d %H:%M:%S %Y") restarting dnsmasq"
+#service dnsmasq restart
+#sleep 2
+#echo "$(date +"%a %b %d %H:%M:%S %Y") restarting pihole-FTL"
+#service pihole-FTL restart
+#sleep 2 
 echo "$(date +"%a %b %d %H:%M:%S %Y") startup script done"
