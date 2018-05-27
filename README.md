@@ -31,6 +31,7 @@ cp -f  /home/gamblodar/securepi/post-checkout /home/gamblodar/securepi/.git/hook
 chown gamblodar -R /home/gamblodar/.ssh  
 chown www-data:www-data -R /var/www
 chmod 600 -R /home/gamblodar/.ssh  
+chmod 664 /etc/openvpn/client.log  
 systemctl enable papirus.service  
 systemctl daemon-reload  
 service papirus start  
