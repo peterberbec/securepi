@@ -11,3 +11,4 @@ authoring-byte-order little-endian;
 server-duid "\000\001\000\001\"\230/\234\322\300\312\217\3766";
 EOF
 echo "removed '/var/lib/dhcp/dhcpd.leases'"
+pihole -f
