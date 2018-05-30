@@ -5,6 +5,7 @@ After=network-online.target
 
 [Service]
 User=stubby
+WorkingDirectory=/var/cache/stubby
 ExecStart=/usr/local/bin/stubby -C /etc/stubby.yml
 AmbientCapabilities=CAP_NET_BIND_SERVICE
 CapabilityBoundingSet=CAP_NET_BIND_SERVICE

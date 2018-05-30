@@ -834,8 +834,8 @@ configure:13033: $? = 0
 configure:13033: result: yes
 configure:13033: checking for ENGINE_load_cryptodev
 configure:13033: gcc -o conftest -g -O2 -Wall -Wextra -D_BSD_SOURCE -D_DEFAULT_SOURCE   conftest.c -lssl -lcrypto -lpthread  >&5
-/tmp/ccOyuQ1N.o: In function `main':
-/home/gamblodar/getdns/build/conftest.c:94: undefined reference to `ENGINE_load_cryptodev'
+/tmp/ccUwnmRV.o: In function `main':
+/home/gamblodar/securepi/getdns/build/conftest.c:94: undefined reference to `ENGINE_load_cryptodev'
 collect2: error: ld returned 1 exit status
 configure:13033: $? = 1
 configure: failed program was:
@@ -971,8 +971,8 @@ configure:13033: $? = 0
 configure:13033: result: yes
 configure:13033: checking for EVP_dss1
 configure:13033: gcc -o conftest -g -O2 -Wall -Wextra -D_BSD_SOURCE -D_DEFAULT_SOURCE   conftest.c -lssl -lcrypto -lpthread  >&5
-/tmp/ccu7mSfj.o: In function `main':
-/home/gamblodar/getdns/build/conftest.c:102: undefined reference to `EVP_dss1'
+/tmp/ccRu3E0E.o: In function `main':
+/home/gamblodar/securepi/getdns/build/conftest.c:102: undefined reference to `EVP_dss1'
 collect2: error: ld returned 1 exit status
 configure:13033: $? = 1
 configure: failed program was:
@@ -1084,8 +1084,8 @@ configure: failed program was:
 configure:13033: result: no
 configure:13033: checking for EVP_DigestVerify
 configure:13033: gcc -o conftest -g -O2 -Wall -Wextra -D_BSD_SOURCE -D_DEFAULT_SOURCE   conftest.c -lssl -lcrypto -lpthread  >&5
-/tmp/ccAsAXuj.o: In function `main':
-/home/gamblodar/getdns/build/conftest.c:102: undefined reference to `EVP_DigestVerify'
+/tmp/ccpMghC3.o: In function `main':
+/home/gamblodar/securepi/getdns/build/conftest.c:102: undefined reference to `EVP_DigestVerify'
 collect2: error: ld returned 1 exit status
 configure:13033: $? = 1
 configure: failed program was:
@@ -1197,8 +1197,8 @@ configure: failed program was:
 configure:13033: result: no
 configure:13033: checking for SSL_CTX_set_min_proto_version
 configure:13033: gcc -o conftest -g -O2 -Wall -Wextra -D_BSD_SOURCE -D_DEFAULT_SOURCE   conftest.c -lssl -lcrypto -lpthread  >&5
-/tmp/ccLScT0v.o: In function `main':
-/home/gamblodar/getdns/build/conftest.c:102: undefined reference to `SSL_CTX_set_min_proto_version'
+/tmp/ccNvsiQ2.o: In function `main':
+/home/gamblodar/securepi/getdns/build/conftest.c:102: undefined reference to `SSL_CTX_set_min_proto_version'
 collect2: error: ld returned 1 exit status
 configure:13033: $? = 1
 configure: failed program was:
@@ -2470,8 +2470,8 @@ configure:14590: gcc -o conftest -g -O2 -Wall -Wextra -D_BSD_SOURCE -D_DEFAULT_S
 conftest.c:109:6: warning: conflicting types for built-in function 'floor'
  char floor ();
       ^~~~~
-/tmp/ccWslHRo.o: In function `main':
-/home/gamblodar/getdns/build/conftest.c:113: undefined reference to `floor'
+/tmp/ccH6N5dC.o: In function `main':
+/home/gamblodar/securepi/getdns/build/conftest.c:113: undefined reference to `floor'
 collect2: error: ld returned 1 exit status
 configure:14590: $? = 1
 configure: failed program was:
@@ -2599,8 +2599,8 @@ configure:14590: $? = 0
 configure:14607: result: -lm
 configure:14615: checking for library containing timer_create
 configure:14646: gcc -o conftest -g -O2 -Wall -Wextra -D_BSD_SOURCE -D_DEFAULT_SOURCE   conftest.c -lm  >&5
-/tmp/ccuf3wa6.o: In function `main':
-/home/gamblodar/getdns/build/conftest.c:113: undefined reference to `timer_create'
+/tmp/ccc2THC2.o: In function `main':
+/home/gamblodar/securepi/getdns/build/conftest.c:113: undefined reference to `timer_create'
 collect2: error: ld returned 1 exit status
 configure:14646: $? = 1
 configure: failed program was:
@@ -2725,7 +2725,7 @@ configure:14646: $? = 0
 configure:14663: result: -lrt
 configure:14671: checking for library containing pthread_create
 configure:14702: gcc -o conftest -g -O2 -Wall -Wextra -D_BSD_SOURCE -D_DEFAULT_SOURCE   conftest.c -lrt -lm  >&5
-/usr/bin/ld: /tmp/cc6oPoVu.o: undefined reference to symbol 'pthread_create@@GLIBC_2.4'
+/usr/bin/ld: /tmp/ccn7EI0C.o: undefined reference to symbol 'pthread_create@@GLIBC_2.4'
 //lib/arm-linux-gnueabihf/libpthread.so.0: error adding symbols: DSO missing from command line
 collect2: error: ld returned 1 exit status
 configure:14702: $? = 1
@@ -2851,8 +2851,8 @@ configure:14702: $? = 0
 configure:14719: result: -lpthread
 configure:14727: checking for library containing srunner_create
 configure:14758: gcc -o conftest -g -O2 -Wall -Wextra -D_BSD_SOURCE -D_DEFAULT_SOURCE   conftest.c -lpthread -lrt -lm  >&5
-/tmp/cc2ju46w.o: In function `main':
-/home/gamblodar/getdns/build/conftest.c:113: undefined reference to `srunner_create'
+/tmp/ccbsWJyV.o: In function `main':
+/home/gamblodar/securepi/getdns/build/conftest.c:113: undefined reference to `srunner_create'
 collect2: error: ld returned 1 exit status
 configure:14758: $? = 1
 configure: failed program was:
@@ -4349,8 +4349,8 @@ configure:16113: $? = 0
 configure:16113: result: yes
 configure:16127: checking for strlcpy
 configure:16127: gcc -o conftest -g -O2 -Wall -Wextra -D_BSD_SOURCE -D_DEFAULT_SOURCE   conftest.c -lssl -lcrypto -lpthread  >&5
-/tmp/cctbJG0B.o: In function `main':
-/home/gamblodar/getdns/build/conftest.c:160: undefined reference to `strlcpy'
+/tmp/ccaMtMOe.o: In function `main':
+/home/gamblodar/securepi/getdns/build/conftest.c:160: undefined reference to `strlcpy'
 collect2: error: ld returned 1 exit status
 configure:16127: $? = 1
 configure: failed program was:
@@ -4520,8 +4520,8 @@ configure: failed program was:
 configure:16127: result: no
 configure:16141: checking for arc4random
 configure:16141: gcc -o conftest -g -O2 -Wall -Wextra -D_BSD_SOURCE -D_DEFAULT_SOURCE   conftest.c -lssl -lcrypto -lpthread  >&5
-/tmp/ccrc6vXc.o: In function `main':
-/home/gamblodar/getdns/build/conftest.c:160: undefined reference to `arc4random'
+/tmp/ccNsd0dw.o: In function `main':
+/home/gamblodar/securepi/getdns/build/conftest.c:160: undefined reference to `arc4random'
 collect2: error: ld returned 1 exit status
 configure:16141: $? = 1
 configure: failed program was:
@@ -4691,8 +4691,8 @@ configure: failed program was:
 configure:16141: result: no
 configure:16155: checking for arc4random_uniform
 configure:16155: gcc -o conftest -g -O2 -Wall -Wextra -D_BSD_SOURCE -D_DEFAULT_SOURCE   conftest.c -lssl -lcrypto -lpthread  >&5
-/tmp/ccisgOqU.o: In function `main':
-/home/gamblodar/getdns/build/conftest.c:160: undefined reference to `arc4random_uniform'
+/tmp/ccQGsuN1.o: In function `main':
+/home/gamblodar/securepi/getdns/build/conftest.c:160: undefined reference to `arc4random_uniform'
 collect2: error: ld returned 1 exit status
 configure:16155: $? = 1
 configure: failed program was:
@@ -4862,8 +4862,8 @@ configure: failed program was:
 configure:16155: result: no
 configure:16184: checking for getentropy
 configure:16184: gcc -o conftest -g -O2 -Wall -Wextra -D_BSD_SOURCE -D_DEFAULT_SOURCE   conftest.c -lssl -lcrypto -lpthread  >&5
-/tmp/ccvmC8N7.o: In function `main':
-/home/gamblodar/getdns/build/conftest.c:160: undefined reference to `getentropy'
+/tmp/ccJRILs2.o: In function `main':
+/home/gamblodar/securepi/getdns/build/conftest.c:160: undefined reference to `getentropy'
 collect2: error: ld returned 1 exit status
 configure:16184: $? = 1
 configure: failed program was:
@@ -5218,6 +5218,7 @@ config.status:1226: creating doc/Makefile
 config.status:1226: creating getdns.pc
 config.status:1226: creating getdns_ext_event.pc
 config.status:1226: creating src/config.h
+config.status:1386: src/config.h is unchanged
 config.status:1400: executing libtool commands
 
 ## ---------------- ##
@@ -5475,7 +5476,7 @@ EXTENSION_LIBUV_EXT_LIBS=''
 EXTENSION_LIBUV_LDFLAGS=''
 EXTENSION_LIBUV_LIB=''
 FGREP='/bin/grep -F'
-GETDNS_COMPILATION_COMMENT='getdns 1.4.2 configured on 2018-05-30T19:06:15Z for the December 2015 version of the API'
+GETDNS_COMPILATION_COMMENT='getdns 1.4.2 configured on 2018-05-30T20:33:52Z for the December 2015 version of the API'
 GETDNS_LIBVERSION='10:2:0'
 GETDNS_NUMERIC_VERSION='0x01040200'
 GETDNS_QUERY='getdns_query'
@@ -5564,7 +5565,7 @@ includedir='${prefix}/include'
 infodir='${datarootdir}/info'
 libdir='${exec_prefix}/lib'
 libexecdir='${exec_prefix}/libexec'
-libtool='/home/gamblodar/getdns/build/libtool'
+libtool='/home/gamblodar/securepi/getdns/build/libtool'
 localedir='${datarootdir}/locale'
 localstatedir='${prefix}/var'
 mandir='${datarootdir}/man'

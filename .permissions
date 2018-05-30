@@ -817,6 +817,7 @@ setup.txt;644;gamblodar;sudo
 setupVars.conf;664;root;root
 ssh/authorized_keys;600;gamblodar;sudo
 ssh/known_hosts;600;gamblodar;sudo
+stubby.conf;644;root;root
 stubby.service;644;root;root
 stubby.yml;644;root;root
 sudoers;440;root;root

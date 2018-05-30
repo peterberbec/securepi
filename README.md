@@ -24,11 +24,18 @@ ln -fs /etc/openvpn/client.log /home/gamblodar/securepi/www
 ln -s /etc/openvpn/client.log /var/log
 ln -fs /home/gamblodar/sudoers /etc/  
 ln -fs /var/www/html /home/gamblodar/securepi/www/pihole  
+ln -fs /home/gamblodar/securepi/hosts /etc  
+ln -fs /home/gamblodar/securepi/stubby.yml /etc/  
+ln -fs /home/gamblodar/securepi/stubby.service /lib/systemd/system/  
+ln -fs /home/gamblodar/securepi/02-stubby.conf /etc/dnsmasq.d/  
+ln -fs /home/gamblodar/securepi/stubby.conf /usr/lib/tmpfiles.d/  
 cp -f  /home/gamblodar/securepi/config.txt /boot/  
 cp -f  /home/gamblodar/securepi/cmdline.txt /boot/  
 cp -f  /home/gamblodar/securepi/pre-commit /home/gamblodar/securepi/.git/hooks/  
 cp -f  /home/gamblodar/securepi/post-checkout /home/gamblodar/securepi/.git/hooks/  
 /home/gamblodar/securepi/generate_ssl_cert.sh  
+cd /home/gamblodar/securepi/getdns/build  
+make install  
 chown gamblodar -R /home/gamblodar/.ssh  
 chown www-data:www-data -R /var/www
 chmod 600 -R /home/gamblodar/.ssh  
@@ -42,7 +49,3 @@ service lighttpd restart
 service dnsmasq restart  
 service pihole-FTL restart  
 bash /etc/rc.local  
-ln -s /home/gamblodar/securepi/hosts /etc  
-ln -s /home/gamblodar/securepi/stubby.yml /etc/
-ln -s /home/gamblodar/securepi/stubby.service /lib/systemd/system/
-ln -s /home/gamblodar/securepi/02-stubby.conf /etc/dnsmasq.d/
