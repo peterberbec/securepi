@@ -1,4 +1,0 @@
-[submodule "getdns"]
-	path = getdns
-	url = git@github.com:peterberbec/getdns.git
-	branch = master
