@@ -1,0 +1,16 @@
+[Unit]
+Description=stubby DNS resolver
+Wants=network-online.target # added
+After=network-online.target # added
+
+[Service]
+User=stubby
+DynamicUser=yes
+CacheDirectory=stubby
+WorkingDirectory=/var/cache/stubby
+ExecStart=/usr/local/bin/stubby  -C /etc/stubby.yml # added
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target
