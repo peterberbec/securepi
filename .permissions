@@ -49,15 +49,6 @@ getdns/m4;755;gamblodar;sudo
 getdns/doc;755;gamblodar;sudo
 getdns/autom4te.cache;755;gamblodar;sudo
 getdns/build;755;gamblodar;sudo
-getdns/build/doc;755;gamblodar;sudo
-getdns/build/src;755;gamblodar;sudo
-getdns/build/src/.libs;755;gamblodar;sudo
-getdns/build/src/getdns;755;gamblodar;sudo
-getdns/build/src/test;755;gamblodar;sudo
-getdns/build/src/tools;755;gamblodar;sudo
-getdns/build/src/tools/.libs;755;gamblodar;sudo
-getdns/build/spec;755;gamblodar;sudo
-getdns/build/spec/example;755;gamblodar;sudo
 getdns/stubby;755;gamblodar;sudo
 getdns/stubby/contrib;755;gamblodar;sudo
 getdns/stubby/contrib/upstart;755;gamblodar;sudo
