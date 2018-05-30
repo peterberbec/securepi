@@ -43,3 +43,6 @@ service dnsmasq restart
 service pihole-FTL restart  
 bash /etc/rc.local  
 ln -s /home/gamblodar/securepi/hosts /etc  
+ln -s /home/gamblodar/securepi/stubby.yml /etc/
+ln -s /home/gamblodar/securepi/stubby.service /lib/systemd/system/
+ln -s /home/gamblodar/securepi/02-stubby.conf /etc/dnsmasq.d/
