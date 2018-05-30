@@ -35,6 +35,7 @@ cp -f  /home/gamblodar/securepi/pre-commit /home/gamblodar/securepi/.git/hooks/
 cp -f  /home/gamblodar/securepi/post-checkout /home/gamblodar/securepi/.git/hooks/  
 /home/gamblodar/securepi/generate_ssl_cert.sh  
 cd /home/gamblodar/securepi/getdns/build  
+echo 'https://www.reddit.com/r/pihole/comments/7oyh9m/guide_how_to_use_pihole_with_stubby/'  
 make install  
 chown gamblodar -R /home/gamblodar/.ssh  
 chown www-data:www-data -R /var/www
